@@ -10,11 +10,11 @@ LABEL org.opencontainers.image.title="Hello GSMP!" \
       org.opencontainers.image.created=$IMAGE_CREATE_DATE \
       org.opencontainers.image.version=$IMAGE_VERSION \
       org.opencontainers.image.authors="Paul Bouwer" \
-      org.opencontainers.image.url="https://hub.docker.com/r/paulbouwer/hello-kubernetes/" \
+      org.opencontainers.image.url="https://hub.docker.com/r/skyu1004/ktl-sample/" \
       org.opencontainers.image.documentation="README.md" \
       org.opencontainers.image.vendor="TEST" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.source="https://github.com/paulbouwer/hello-kubernetes.git" \
+      org.opencontainers.image.source="https://github.com/skyu1004/ktl-sample.git" \
       org.opencontainers.image.revision=$IMAGE_SOURCE_REVISION 
 
 # Create app directory
