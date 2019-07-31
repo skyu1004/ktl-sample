@@ -13,65 +13,65 @@ The default port of 8080 can be overriden using the `PORT` environment variable.
 
 It is available on DockerHub as:
 
-- [paulbouwer/hello-kubernetes:1.5](https://hub.docker.com/r/paulbouwer/hello-kubernetes/)
+- [paulbouwer/ktl-sample:1.5](https://hub.docker.com/r/paulbouwer/hello-kubernetes/)
 
 ## Deploy
 
 You can deploy the image to your Kubernetes cluster one of two ways:
 
-Deploy using the hello-kubernetes.yaml, which contains definitions for the service and deployment objects:
+Deploy using the ktl-sample.yaml, which contains definitions for the service and deployment objects:
 
 ```yaml
-# hello-kubernetes.yaml
+# ktl-sample.yaml
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-kubernetes
+  name: ktl-sample
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8080
   selector:
-    app: hello-kubernetes
+    app: ktl-sample
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-kubernetes
+  name: ktl-sample
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: hello-kubernetes
+      app: ktl-sample
   template:
     metadata:
       labels:
-        app: hello-kubernetes
+        app: ktl-sample
     spec:
       containers:
-      - name: hello-kubernetes
-        image: paulbouwer/hello-kubernetes:1.5
+      - name: ktl-sample
+        image: skyu1004/ktl-sample:1.5
         ports:
         - containerPort: 8080
 ```
 
 ```bash
-$ kubectl apply -f yaml/hello-kubernetes.yaml
+$ kubectl apply -f yaml/ktl-sample.yaml
 ```
 
 Or, deploy by executing the following `run` and `expose` commands on `kubectl`. 
 
 ```bash
-$ kubectl run hello-kubernetes --replicas=3 --image=paulbouwer/hello-kubernetes:1.5 --port=8080
-$ kubectl expose deployment hello-kubernetes --type=LoadBalancer --port=80 --target-port=8080 --name=hello-kubernetes
+$ kubectl run ktl-sample --replicas=3 --image=skyu1004/ktl-sample:1.5 --port=8080
+$ kubectl expose deployment ktl-sample --type=LoadBalancer --port=80 --target-port=8080 --name=ktl-sample
 ```
 
 This will display a **Hello world!** message when you hit the service endpoint in a browser. You can get the service endpoint ip address by executing the following command and grabbing the returned external ip address value:
 
 ```bash
-$ kubectl get service hello-kubernetes
+$ kubectl get service ktl-sample
 ```
 
 ## Custom Message
